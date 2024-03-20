@@ -2,8 +2,8 @@ from django.shortcuts import render
 
 # Create your views here.
 
-def index(request):
-    return render(request, 'main/index.html')
+def greeting(request):
+    return render(request, 'main/greeting.html')
 
-def lol(request):
-    return render(request, 'main/lol.html')
+def about_site(request):
+    return render(request, 'main/about_site.html')

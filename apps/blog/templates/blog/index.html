@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Blog{% endblock %}
+
+{% block content %}
+<h1 class="text 3x1 font-bold mb-4">Blog</h1>
+<p>Якщо ви добралися до цієї сторінки, то красавчики</p>
+<hr />
+<div class="grid grid-cols-1 gap-7 mt-6">
+    {% for post in all_posts %}
+    <div class="card w-100 bg-base-100 shadow-xl|">
+        <figure><img src="{% if not post.image %}
+            https://tse2.mm.bing.net/th?id=OIP.QexcnKLol8SaCraOMz2o6AHaFo&pid=Api&P=0&h=180
+            {% else %}
+            https://tse2.mm.bing.net/th?id=OIP.QexcnKLol8SaCraOMz2o6AHaFo&pid=Api&P=0&h=180
+            {% endif %} "alt="Shoes" class="w-full max-h-96"/></figure>
+        <div class="card-body">
+            <h2 class="card-title">{{post.title}}</h2>
+            <div class="card-actions justify-end"></div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

@@ -6,8 +6,9 @@
 <div class="my-4 rounded-lg bg-base-200 p-11">
     <h1 class="text 3x1 font-bold mb-4">Blog</h1>
     <p>Якщо ви добралися до цієї сторінки, то красавчики</p>
-    <a onclick="my_modal_4.showModal()" class="btn btn-primary mt-4">Створити пост</a>
-    <div class="grid grid-cols-3 gap-7 mt-4">
+    <a onclick="my_modal_4.showModal()" class="btn btn-accent mt-4">Створити пост</a>
+    <hr class="mt-10" />
+    <div class="grid grid-cols-3 gap-7 mt-10">
         {% for post in all_posts %}
         <div class="card w-100 bg-base-200 shadow-xl transition-all duration-300 hover:shadow-2xl">
             <a href="{% url "blog:detail" post.id %}">
@@ -31,12 +32,10 @@
         <form method="dialog">
             <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
         </form>
-        <h3 class="font-bold text-lg">Hello!</h3>
-        <p class="py-4">Click the button below to close</p>
         <form action="{% url "blog:create" %}" method="post" enctype='multipart/form-data'>
             {% csrf_token %}
             {{created_form}}
-            <button class='btn btn-primary'>Створити</button>
+            <button class='btn btn-accent'>Створити пост</button>
         </form>
 
     </div>

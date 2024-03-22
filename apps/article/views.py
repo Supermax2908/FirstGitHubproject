@@ -5,10 +5,12 @@ from .forms import PostForm
 
 def index(request):
     all_posts = Post.objects.all()
+    count_posts = all_posts.count()
     
     context = {
         'all_posts': all_posts,
-        'created_form': PostForm()
+        'created_form': PostForm(),
+        'count_posts': count_posts
     }
     return render(request, 'article/index.html', context)
 
@@ -29,4 +31,3 @@ def create_view(request):
             post.author = request.user
             post.save()
             return redirect('article:detail', post_id=post.id)
-    

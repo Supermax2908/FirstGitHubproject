@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Логін{% endblock %}
+
+{% block content %}
+<h1 class="text-3xl font-bold mb-4">Логін</h1>
+<form method='post'>
+    {% csrf_token %}
+    {{form.as.p}}
+    <button class='btn btn-accent'>Логін</button>
+</form>
+{% endblock %}

@@ -9,7 +9,7 @@
     <p class="mt-6">Кількість постів: {{count_posts}}</p>
     <a onclick="my_modal_4.showModal()" class="btn btn-accent mt-4">Створити пост</a>
     <hr class="mt-10" />
-    <div class="grid grid-cols-3 gap-7 mt-10">
+    <div class="grid grid-cols-3 gap-7 mt-6">
         {% for post in all_posts %}
         {% include 'article/_include_blocks/_card_post.html' with post=post %}
         {% endfor %}
@@ -30,5 +30,36 @@
       </form>
     </div>
   </dialog>
+
+
+  <script>
+    function like(id) {
+      fetch(`like/${id}`, {
+        method: 'GET' 
+      })
+      .then((res) => res.json())
+      .then((data) => {
+        document.getElementById(`like_${id}`).innerHTML = `<i class="fa-sharp fa-solid fa-heart text-red-400"></i> ${data.likes}`;
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+    }
+  </script>
+
+  <script>
+    function dislike(id) {
+      fetch(`dislike/${id}`, {
+        method: 'GET' 
+      })
+      .then((res) => res.json())
+      .then((data) => {
+        document.getElementById(`dislike_${id}`).innerHTML = `<i class="fa-solid fa-thumbs-down text-black-300"</i> ${data.dislikes}`;
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+    }
+  </script>
 
 {% endblock %}

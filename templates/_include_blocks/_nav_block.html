@@ -1,6 +1,6 @@
-<div class="navbar bg-base-100">
+<div class="navbar bg-base-100 ">
   <div class="navbar-start">
-    <b><a class="btn btn-ghost text-xl" href="{% url "main:about_site" %}" style="color:purple"><img src="https://www.svgrepo.com/show/491898/app-1.svg" width="200"></img>Суперблог2024</a><b>
+    <b><a class="btn text-3xl" href="{% url "main:about_site" %}" style="color:purple"><img src="https://www.svgrepo.com/show/491898/app-1.svg" width="200"></img>Суперблог2024</a><b>
   </div>
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1">
@@ -9,7 +9,28 @@
     </ul>
   </div>
   <div class="navbar-end hidden lg:flex">
-    <a class="btn">Button</a>
+    {% if user.is_authenticated %}
+    <div class="dropdown dropdown-end">
+      <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+        <div class="w-10 rounded-full">
+          <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+        </div>
+      </div>
+      <ul tabindex="0" class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-200 rounded-box w-52">
+        <span class="p-2 text-sm text-primary">Hello, <b>{{user.username}}</b></span>
+        <li>
+          <a class="justify-between" href="{% url "members:profile" %}">
+            Profile
+            <span class="badge">New</span>
+          </a>
+        </li>
+        <li><a href="{% url "members:logout" %}">Logout</a></li>
+      </ul>
+    </div>
+    {% else %}
+    <a href="{% url "members:login" %}" class="btn btn-ghost">Login</a>
+    <a href="{% url "members:singup" %}" class="btn btn-ghost">Singup</a>
+    {% endif %}
   </div>
 </div>
 

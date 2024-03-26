@@ -14,10 +14,11 @@
                 <i class="fa-sharp fa-solid fa-heart {% if user in post.like.all %}text-red-400{% else %}text-white{% endif %}"></i>
                 {{post.like.count}}
             </button>
-            <button id="dislike_{{ post.id }}" onclick="dislike({{post.id}})" class="btn text-lg">
+            <button id="dislike_{{post.id}}" onclick="dislike({{post.id}})" class="btn text-lg">
                 <i class="fa-solid fa-thumbs-down {% if user in post.dislike.all %}text-black-300{% else %}text-white{% endif %}"></i>
                 {{ post.dislike.count }}
             </button>
         </div>
     </a>
+    <p class="mx-auto my-10">Кількість коментарів - {{count_comments}}</p>
 </div>

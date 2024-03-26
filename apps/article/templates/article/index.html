@@ -39,10 +39,15 @@
       })
       .then((res) => res.json())
       .then((data) => {
-        document.getElementById(`like_${id}`).innerHTML = `<i class="fa-sharp fa-solid fa-heart text-red-400"></i> ${data.likes}`;
-      })
+        if(data.user_like){
+          document.getElementById(`like_${id}`).innerHTML = `<i class="fa-sharp fa-solid fa-heart text-red-400"></i> ${data.like_count}`;
+      }else{
+          document.getElementById(`like_${id}`).innerHTML = `<i class="fa-sharp fa-solid fa-heart text-white"></i> ${data.like_count}`;
+      }
+    })
       .catch((error) => {
         console.error('Error:', error);
+        window.location.href = '{% url "members:login" %}';
       });
     }
   </script>
@@ -54,10 +59,15 @@
       })
       .then((res) => res.json())
       .then((data) => {
-        document.getElementById(`dislike_${id}`).innerHTML = `<i class="fa-solid fa-thumbs-down text-black-300"</i> ${data.dislikes}`;
-      })
+        if(data.user_dislike){
+          document.getElementById(`dislike_${id}`).innerHTML = `<i class="fa-solid fa-thumbs-down text-black-300"></i> ${data.dislike_count}`;
+      }else{
+          document.getElementById(`dislike_${id}`).innerHTML = `<i class="fa-solid fa-thumbs-down text-white"></i> ${data.dislike_count}`;
+      }
+    })
       .catch((error) => {
         console.error('Error:', error);
+        window.location.href = '{% url "members:login" %}';
       });
     }
   </script>
